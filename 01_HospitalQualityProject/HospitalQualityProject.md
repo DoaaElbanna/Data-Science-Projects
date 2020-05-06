@@ -49,7 +49,7 @@ mortality rates for heart attack.
          xlab="Death rates from heart attack",
          col = "darkmagenta")
 
-![](HospitalQualityProject_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/01_HospitalQualityProject/Data_files/hist_mortality_rate.png)
 
 ————————————————————————————————
 --------------------------------
