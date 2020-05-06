@@ -2,7 +2,9 @@ In this project I created three functions that interact with a dataset is contai
 
 By these functions I do some explorotary data like: calculates the mean of a pollutant, return the number of complete cases(observations that do not have any missing values) in each data file, calculates the correlation between sulfate and nitrate for monitor locations.
 
-## Implementation three functions using R to do that:
+## what we are going to do in this project:
+
+### Implementation three functions using R to do that:
 
 1-  Function named “pollutantmean” that calculates the mean of a pollutant (sulfate or nitrate) across a specified list of monitors.
 
