@@ -19,7 +19,7 @@ There are three files:
 -   **Hospital\_Revised\_Flatfiles.pdf**: Descriptions of the variables
     in each file (i.e the code book).
 
-### what we are going to do in this assignment:
+### what we are going to do in this project:
 
 1- Plot the 30-day mortality rates for heart attack
 
