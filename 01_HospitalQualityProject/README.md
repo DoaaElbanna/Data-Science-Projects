@@ -14,7 +14,7 @@ First you can found the data set files in [Data_files](https://github.com/DoaaEl
 
 4- Ranking hospitals in all states
 
-And The deatails about the project in [HospitalQualityProject](HospitalQualityProject.md) file, and [R code files](https://github.com/DoaaElbanna/Data-Science-Projects/tree/master/01_HospitalQualityProject/R-implementation)  
+And The documentation about the project in [HospitalQualityProject](HospitalQualityProject.md) file, and [R code files](https://github.com/DoaaElbanna/Data-Science-Projects/tree/master/01_HospitalQualityProject/R-implementation)  
 
 
 
