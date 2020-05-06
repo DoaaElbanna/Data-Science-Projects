@@ -78,7 +78,7 @@ Plot1
     hist(power_data[, Global_active_power], main="Global Active Power", 
          xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
 
-![](ElectricPowerConsumptionProject_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot1.png)
 
 Plot2
 -----
@@ -98,7 +98,7 @@ Plot2
          y = power_data[,Global_active_power], 
          type = "l", xlab = "", ylab = "Global Active Power KilloWatts")
 
-![](ElectricPowerConsumptionProject_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot2.png)
 
 Plot3
 -----
@@ -122,7 +122,7 @@ Plot3
            , c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  ")
            ,lty=c(1,1), lwd=c(1,1))
 
-![](ElectricPowerConsumptionProject_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot3.png)
 
 Plot4
 -----
@@ -162,4 +162,4 @@ Plot4
     plot(x = power_data[,dateTime], y = power_data[,Global_reactive_power], 
          type = "l", xlab = "dateTime", ylab = "Voltage")
 
-![](ElectricPowerConsumptionProject_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot4.png)
