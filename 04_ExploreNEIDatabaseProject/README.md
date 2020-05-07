@@ -13,7 +13,7 @@ The goal of this project is to explore the National Emissions Inventory database
 ### what are we going to do:
 1- Make a plot showing total emissions from PM2.5 decreased in the United States from 1999 to 2008.
 
-2- Make a plot showing total emissions from PM2.5 decreased in the Baltimore City, Maryland city from 1999 to 2008.
+2- Make a plot showing total emissions from PM2.5 decreased in the Baltimore City and Maryland city from 1999 to 2008.
 
 3- Make a plot showing which of the four sources(point, nonpoint, onroad, nonroad) decreases in emissions from 1999–2008 for Baltimore City and Which increased in emissions from 1999–2008
 
@@ -21,7 +21,7 @@ The goal of this project is to explore the National Emissions Inventory database
 
 5- Make a plot showing how have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City.
 
-6- Make a plot to compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California, Then providing which city has seen greater changes over time in motor vehicle emissions.
+6- Make a plot to compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County and California, Then providing which city has seen greater changes over time in motor vehicle emissions.
 
 
 You can find the documentation for this project in [ExploreNEIDatabaseProject](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/ExploreNEIDatabaseProject.md) file.
