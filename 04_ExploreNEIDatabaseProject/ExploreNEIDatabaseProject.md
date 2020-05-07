@@ -70,7 +70,8 @@ States for each of the years 1999, 2002, 2005, and 2008.
 
     total_pm <- with(NEI,tapply(NEI$Emissions, NEI$year, sum, na.rm = TRUE))
     years <- unique(NEI$year)
-    plot(years, total_pm, pch =19, type = "o", main = expression("Total PM"[2.5]*" Emissions over a years"), xlab = "Year", ylab = expression("Total PM"[2.5]*" Emissions"))
+    plot(years, total_pm, pch =19, type = "o", main = expression("Total PM"[2.5]*" Emissions over a years"), 
+         xlab = "Year", ylab = expression("Total PM"[2.5]*" Emissions"))
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot1.png)
 
@@ -85,7 +86,8 @@ Make a plot showing total emissions from PM2.5 decreased in the
 
     baltimore_data <- subset(NEI, fips == "24510")  # Subset baltimore data
     tpm_baltimore <- with(baltimore_data,tapply(baltimore_data$Emissions, baltimore_data$year, sum, na.rm = TRUE))
-    barplot(as.table(tpm_baltimore), main = expression("Total PM"[2.5]*" Emissions for Baltimore City"), xlab = "Year", ylab = expression("Total Pm"[2.5]*" Emissions"), col = "#004c4c")
+    barplot(as.table(tpm_baltimore), main = expression("Total PM"[2.5]*" Emissions for Baltimore City"), 
+            xlab = "Year", ylab = expression("Total Pm"[2.5]*" Emissions"), col = "#004c4c")
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot2.png)
 
@@ -103,7 +105,7 @@ answer this question.
 **Implementation:**
 
     library(ggplot2)
-    ggplot(baltimore_data, aes(factor(baltimore_data$year), baltimore_data$Emissions, fill = baltimore_data$type)) + geom_bar(stat="identity") + facet_grid(.~baltimore_data$type, scales = "free", space = "free")+
+    ggplot(baltimore_data, aes(factor(baltimore_data$year), baltimore_data$Emissions, fill = baltimore_data$type)) +      geom_bar(stat="identity") + facet_grid(.~baltimore_data$type, scales = "free", space = "free")+
       theme_bw() + labs(x="Year", y=expression("Total PM"[2.5]*" Emissions")) + labs(title = expression("Total PM"[2.5]*" Emissions in Baltimore by Source Types")) + guides(fill = guide_legend(title = "Source Types"))+
       theme(plot.title = element_text(hjust = 0.5)) + scale_fill_manual(values=c("#3D0F2B","#69527E","#AA6F73", "#444888"))
 
