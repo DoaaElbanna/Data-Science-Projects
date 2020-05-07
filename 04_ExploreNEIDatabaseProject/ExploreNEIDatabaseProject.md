@@ -105,9 +105,13 @@ answer this question.
 **Implementation:**
 
     library(ggplot2)
-    ggplot(baltimore_data, aes(factor(baltimore_data$year), baltimore_data$Emissions, fill = baltimore_data$type)) +      geom_bar(stat="identity") + facet_grid(.~baltimore_data$type, scales = "free", space = "free")+
-      theme_bw() + labs(x="Year", y=expression("Total PM"[2.5]*" Emissions")) + labs(title = expression("Total PM"[2.5]*" Emissions in Baltimore by Source Types")) + guides(fill = guide_legend(title = "Source Types"))+
-      theme(plot.title = element_text(hjust = 0.5)) + scale_fill_manual(values=c("#3D0F2B","#69527E","#AA6F73", "#444888"))
+    ggplot(baltimore_data, aes(factor(baltimore_data$year), baltimore_data$Emissions, fill = baltimore_data$type)) +  
+    geom_bar(stat="identity") + facet_grid(.~baltimore_data$type, scales = "free", space = "free")+
+      theme_bw() + labs(x="Year", y=expression("Total PM"[2.5]*" Emissions")) + 
+      labs(title = expression("Total PM"[2.5]*" Emissions in Baltimore by Source Types")) + 
+      guides(fill = guide_legend(title = "Source Types"))+
+      theme(plot.title = element_text(hjust = 0.5)) + 
+      scale_fill_manual(values=c("#3D0F2B","#69527E","#AA6F73", "#444888"))
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot3.png)
 From the plot, The nonpoint, onroad, nonroad sources are decresed from
