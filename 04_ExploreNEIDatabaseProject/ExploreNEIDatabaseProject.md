@@ -56,7 +56,7 @@ SCC](https://ofmpub.epa.gov/sccsearch/docs/SCC-IntroToSCCs.pdf).
 
 #### The Goal of this project is to explore the National Emissions Inventory database and see what it say about fine particulate matter pollution in the United states over the 10-year period 1999–2008.
 
-**First Read the Data Files **
+**First Read the Data Files**
 
     NEI <- readRDS("summarySCC_PM25.rds")
     SCC <- readRDS("Source_Classification_Code.rds")
