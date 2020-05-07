@@ -72,7 +72,7 @@ States for each of the years 1999, 2002, 2005, and 2008.
     years <- unique(NEI$year)
     plot(years, total_pm, pch =19, type = "o", main = expression("Total PM"[2.5]*" Emissions over a years"), xlab = "Year", ylab = expression("Total PM"[2.5]*" Emissions"))
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot1.png)
 
 ------------------------------------------------------------------------
 
@@ -87,7 +87,7 @@ Make a plot showing total emissions from PM2.5 decreased in the
     tpm_baltimore <- with(baltimore_data,tapply(baltimore_data$Emissions, baltimore_data$year, sum, na.rm = TRUE))
     barplot(as.table(tpm_baltimore), main = expression("Total PM"[2.5]*" Emissions for Baltimore City"), xlab = "Year", ylab = expression("Total Pm"[2.5]*" Emissions"), col = "#004c4c")
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot2.png)
 
 ------------------------------------------------------------------------
 
@@ -107,7 +107,7 @@ answer this question.
       theme_bw() + labs(x="Year", y=expression("Total PM"[2.5]*" Emissions")) + labs(title = expression("Total PM"[2.5]*" Emissions in Baltimore by Source Types")) + guides(fill = guide_legend(title = "Source Types"))+
       theme(plot.title = element_text(hjust = 0.5)) + scale_fill_manual(values=c("#3D0F2B","#69527E","#AA6F73", "#444888"))
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot3.png)
 From the plot, The nonpoint, onroad, nonroad sources are decresed from
 1999-2008 and The point source increased from 1999-2008.
 
@@ -133,7 +133,7 @@ coal combustion-related sources changed from 1999–2008.
       labs(x="Year", y=expression("Total PM"[2.5]*" Emission (10^5 Tons)")) + 
       labs(title=expression("PM"[2.5]*" Coal Combustion Source Emissions In US from 1999-2008"))
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot4.png)
 
 From the plot we notice that emissions from coal combustion-related
 sources have a slight decrease from 1999–2008.
@@ -161,7 +161,7 @@ changed from 1999–2008 in Baltimore City.
       labs(x="Year", y=expression("Total PM"[2.5]*" Emission (10^5 Tons)")) + 
       labs(title=expression("PM"[2.5]*" Motor Vehicle Source Emissions in Baltimore"))
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot5.png)
 
 ------------------------------------------------------------------------
 
@@ -189,4 +189,4 @@ greater changes over time in motor vehicle emissions.
       theme(plot.title = element_text(hjust = 0.5)) +
       scale_fill_manual(values = c("#a74c65", "#866f8d"))
 
-![](ExploreNEIDatabaseProject_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot6.png)
