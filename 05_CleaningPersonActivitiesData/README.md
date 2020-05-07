@@ -3,7 +3,7 @@
 **The goal of the project:** prepare tidy data that can be used for later analysis.
 
 ## Data Set source: 
-[UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+[UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 
 
 ## Data Set Information:
