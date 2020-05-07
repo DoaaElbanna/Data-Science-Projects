@@ -33,14 +33,14 @@ and 2008.
 
 #### There are sex variales:
 
--   **fips:**A five-digit number (represented as a string) indicating
+-   **fips:** A five-digit number (represented as a string) indicating
     the U.S. county
--   **SCC:**The name of the source as indicated by a digit string (see
+-   **SCC:** The name of the source as indicated by a digit string (see
     source code classification table)
--   **Pollutant:**A string indicating the pollutant.
--   **Emissions:**Amount of PM2.5 emitted, in tons.
--   **type:**The type of source (point, non-point, on-road, or non-road)
--   **year:**The year of emissions recorded.
+-   **Pollutant:** A string indicating the pollutant.
+-   **Emissions:** Amount of PM2.5 emitted, in tons.
+-   **type:** The type of source (point, non-point, on-road, or non-road)
+-   **year:** The year of emissions recorded.
 
 **2-Source Classification Code
 Table(Source\_Classification\_Code.rds):**
