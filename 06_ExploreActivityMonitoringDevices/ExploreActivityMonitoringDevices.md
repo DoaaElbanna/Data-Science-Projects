@@ -70,13 +70,15 @@ and weekends.
 
     ## [1] 10765
 
-Part2: The average daily activity pattern
+### Part2: The average daily activity pattern
 
     # Compute average steps per intervals
     avg_steps <- aggregate(steps ~ interval, activity, mean)
 
     # Make a time series plot
-    plot(avg_steps$interval, avg_steps$steps, type = "l", main = "Average Daily Activity Pattern",xlab = "Time interval", ylab = "Average Steps", col="#5B022C")
+    plot(avg_steps$interval, avg_steps$steps, type = "l", 
+    main = "Average Daily Activity Pattern",xlab = "Time interval", 
+    ylab = "Average Steps", col="#5B022C")
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot2.png)
 
@@ -110,7 +112,8 @@ Part2: The average daily activity pattern
     steps_per_day <- aggregate(steps ~ date, activity_data, sum)
 
     # Histogram
-    hist(steps_per_day$steps, main = "Histogram of total number of steps per day", xlab = "Steps per day", col="#684D71")
+    hist(steps_per_day$steps, main = "Histogram of total number of steps per day", 
+    xlab = "Steps per day", col="#684D71")
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot3.png)
 
