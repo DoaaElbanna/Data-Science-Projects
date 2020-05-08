@@ -39,16 +39,17 @@ In this step I read the data from outcome-of-care-measures.csv ,then
 plot a histogram for column(11) which is contain the data for the 30-day
 mortality rates for heart attack.
 
+```r
     data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
     data[,11] <- as.numeric(data[, 11])
-
+```
     ## Warning: NAs introduced by coercion
-
+```r
     outcome_data <- data[, 11]
     hist(outcome_data, main = "The 30-day mortality rates for heart attack",
          xlab="Death rates from heart attack",
          col = "darkmagenta")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/01_HospitalQualityProject/Data_files/hist_mortality_rate.png)
 
 ————————————————————————————————
@@ -68,6 +69,7 @@ the specified outcome in that state.
 
 ### Implementation:
 
+```r
     best <- function(state, outcome)
     {
       data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
@@ -103,23 +105,24 @@ the specified outcome in that state.
       index <- which.min(outcome_data)  #return index of the minmum value
       return(data[index, ]$name)
     }
+```
 
 **Test cases:**
-
+```r
     best("TX", "heart attack")
-
+```
     ## [1] "CYPRESS FAIRBANKS MEDICAL CENTER"
-
+```r
     best("TX", "heart failure")
-
+```
     ## [1] "FORT DUNCAN MEDICAL CENTER"
-
+```r
     best("BB", "heart attack")
-
+```
     ## Error in best("BB", "heart attack"): invalid state
-
+```r
     best("NY", "hert attack")
-
+```
     ## Error in best("NY", "hert attack"): invalid outcome
 
 ————————————————————————————————
@@ -137,6 +140,7 @@ that has the ranking specified by the num argument.
 
 ### Implementation:
 
+```r
     rankhospital <- function(state, outcome, num = "best")
     {
       
@@ -183,19 +187,20 @@ that has the ranking specified by the num argument.
       return(data[index, ]$name)
       
     }
+```
 
 **Test cases:**
-
+```r
     rankhospital("TX", "heart failure", 4)
-
+```
     ## [1] "ATLANTA MEMORIAL HOSPITAL"
-
+```r
     rankhospital("MD", "heart attack", "worst")
-
+```
     ## [1] "HARFORD MEMORIAL HOSPITAL"
-
+```r
     rankhospital("MN", "heart attack", 5000)
-
+```
     ## [1] NA
 
 ————————————————————————————————
@@ -210,7 +215,7 @@ containing the hospital in each state that has the ranking specified in
 num.
 
 ### Implementation
-
+```r
     rankall <- function(outcome, num = "best")
     {
       data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
@@ -265,11 +270,12 @@ num.
       return(ranking_data)
       
     }
+```
 
 **Test cases:**
-
+```r
     head(rankall("heart attack", 20), 10)
-
+```
     ##                                  hospital state
     ## 12                                   <NA>    AK
     ## 27                 FAYETTE MEDICAL CENTER    AL
@@ -282,15 +288,16 @@ num.
     ## 38                                   <NA>    DE
     ## 34                CAPE CANAVERAL HOSPITAL    FL
 
+```r
     tail(rankall("pneumonia", "worst"), 3)
-
+```
     ##                                      hospital state
     ## 23 MAYO CLINIC HEALTH SYSTEM - NORTHLAND, INC    WI
     ## 46                     PLATEAU MEDICAL CENTER    WV
     ## 49           NORTH BIG HORN HOSPITAL DISTRICT    WY
-
+```r
     tail(rankall("heart failure"), 10)
-
+```
     ##                                                             hospital state
     ## 34                         WELLMONT HAWKINS COUNTY MEMORIAL HOSPITAL    TN
     ## 4                                         FORT DUNCAN MEDICAL CENTER    TX
