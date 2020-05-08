@@ -1,4 +1,3 @@
-```r
 # This script have:
 
 # 1-Merges the training and the test sets to create one data set.
@@ -87,7 +86,7 @@ tidySet <- tidySet[order(tidySet$subjectId, tidySet$activityId),]
 write.table(tidySet, "tidySet.txt", row.name=FALSE)
 
 
-```
+
 
 
 
