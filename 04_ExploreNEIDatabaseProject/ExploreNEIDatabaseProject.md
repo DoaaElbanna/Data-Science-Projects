@@ -73,6 +73,8 @@ States for each of the years 1999, 2002, 2005, and 2008.
     plot(years, total_pm, pch =19, type = "o", main = expression("Total PM"[2.5]*" Emissions over a years"), 
          xlab = "Year", ylab = expression("Total PM"[2.5]*" Emissions"))
 ```
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot1.png)
+
 
 ------------------------------------------------------------------------
 
