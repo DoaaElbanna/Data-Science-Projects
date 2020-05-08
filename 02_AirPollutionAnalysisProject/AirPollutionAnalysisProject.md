@@ -41,6 +41,7 @@ monitors list in the “id” vector(Ignoring the NA values)
 
 ### implementaion
 
+```r
     pollutantmean <- function(directory, pollutant, id = 1:332)
     {
         pollutatnts = c()  #empty vector to store pollutants
@@ -59,15 +60,16 @@ monitors list in the “id” vector(Ignoring the NA values)
         return(pollutatnts_mean)
         
     }
+```
 
 **Test cases:**
-
+```r
     pollutantmean("specdata", "sulfate", 1:10)
-
+```
     ## [1] 4.064128
-
+```r
     pollutantmean("specdata", "nitrate", 50:70)
-
+```
     ## [1] 0.8479408
 
 —————————————————————————–
@@ -92,6 +94,7 @@ the number of complete cases.
 
 ### Implementation
 
+```r
     complete <- function(directory, id=1:332)
     {
       nobs <- c()  #store number of complete cases
@@ -110,25 +113,26 @@ the number of complete cases.
       
       return(data.frame(id=id, nobs=nobs))
     }
+```
 
 **Test cases**
-
+```r
     complete("specdata", 1)
-
+```
     ##   id nobs
     ## 1  1  117
-
+```r
     complete("specdata", c(2, 5, 8, 7, 12))
-
+```
     ##   id nobs
     ## 1  2 1041
     ## 2  5  402
     ## 3  8  192
     ## 4  7  442
     ## 5 12   96
-
+```r
     complete("specdata", 30:25)
-
+```
     ##   id nobs
     ## 1 30  932
     ## 2 29  711
@@ -162,7 +166,7 @@ If no monitors meet the threshold requirement, then the function should
 return a numeric vector of length 0.
 
 ### Implementation
-
+```r
     corr <- function(directory, threshold = 0)
     {
       filename <- list.files(directory)
@@ -184,25 +188,26 @@ return a numeric vector of length 0.
       correlations
       
     }
+```
 
 **Test cases**
-
+```r
     cr <- corr("specdata", 150)
     head(cr)
-
+```
     ## [1] -0.01895754 -0.14051254 -0.04389737 -0.06815956 -0.12350667 -0.07588814
-
+```r
     summary(cr)
-
+```
     ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     ## -0.21057 -0.05147  0.09333  0.12401  0.26836  0.76313
-
+```r
     cr <- corr("specdata", 5000)
     summary(cr)
-
+```
     ## Length  Class   Mode 
     ##      0   NULL   NULL
-
+```r
     length(cr)
-
+```
     ## [1] 0
