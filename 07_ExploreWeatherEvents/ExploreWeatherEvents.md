@@ -1,6 +1,3 @@
-————————————————————————–
--------------------------
-
 1.Synopsis
 ----------
 
@@ -50,8 +47,9 @@ fatalities, injuries, and property damage.
 
 Loading neccessarry packages.
 
+```r
     library(dplyr)
-
+```    
     ## 
     ## Attaching package: 'dplyr'
 
@@ -63,9 +61,10 @@ Loading neccessarry packages.
     ## 
     ##     intersect, setdiff, setequal, union
 
+```r
     library(ggplot2)
     library(gridExtra)
-
+```
     ## Warning: package 'gridExtra' was built under R version 3.6.2
 
     ## 
@@ -77,6 +76,7 @@ Loading neccessarry packages.
 
 Loading DataSet
 
+```r
     before <- Sys.time()  # To determine the time before reading data
     storm_data <- read.csv("repdata_data_StormData.csv")
     after <- Sys.time()  #  determine the time after reading data
@@ -84,15 +84,16 @@ Loading DataSet
     loading_time <- after - before
 
     print(paste("The time was taking to reading data is ", loading_time))
-
+```
     ## [1] "The time was taking to reading data is  1.36408506631851"
 
 #### 2.2.2
 
 #### Data processing
 
+```r
     head(storm_data)
-
+```
     ##   STATE__           BGN_DATE BGN_TIME TIME_ZONE COUNTY COUNTYNAME STATE
     ## 1       1  4/18/1950 0:00:00     0130       CST     97     MOBILE    AL
     ## 2       1  4/18/1950 0:00:00     0145       CST      3    BALDWIN    AL
@@ -133,29 +134,35 @@ In this analysis, we only focus on analyzing the effects of weather
 events to public health and economy, So we Select columns related to
 these.
 
+```r
     storm_data <- storm_data[, c("BGN_DATE", "EVTYPE", "FATALITIES", "INJURIES", 
         "PROPDMG", "PROPDMGEXP", "CROPDMG", "CROPDMGEXP")]
+```
 
 ### First, According United States We want to to determine which types of events are most harmful with respect to population health?
 
 **The following lines of code summarize the injury and fatality data per
 event.**
 
+```r
     event_fatality <- storm_data %>% group_by(EVTYPE) %>% summarize(sum(FATALITIES,na.rm=TRUE))
     colnames(event_fatality) <- c("EVTYPE","FATALITIES")
     event_injuries <- storm_data %>% group_by(EVTYPE) %>% summarize(sum(INJURIES,na.rm=TRUE))
     colnames(event_injuries) <- c("EVTYPE","INJURIES")
+```
 
 **Then rearrange the data in descending order to determine the most
 harmful events.**
 
+```r
     event_fatality <- event_fatality[order(event_fatality$FATALITIES,decreasing = TRUE),]
     event_injuries <- event_injuries[order(event_injuries$INJURIES,decreasing = TRUE),]
-
+```
 #### Results
 
 **Getting and Plotting the top 7 causes of fatality and injury.**
 
+```r
     event_fatality <- event_fatality[1:7,]
     event_injuries <- event_injuries[1:7,]
     injPlot <- ggplot(event_injuries) + geom_bar(aes(x = reorder(EVTYPE, -INJURIES), y = INJURIES,        
@@ -167,8 +174,8 @@ harmful events.**
         xlab("Event")+ylab("Fatalities")+ggtitle("Top 7 Events Causing Fatalities") +     
         scale_fill_brewer(palette="Spectral")
     grid.arrange(fatPlot,injPlot)
-
-![](ExploreWeatherEvents_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+```
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/07_ExploreWeatherEvents/graphs/Plot1.png)
 
 **NOTE:From the plot we noticed the “Tornados” are the leading cause of
 injuries and death.**
@@ -181,6 +188,7 @@ injuries and death.**
 
 #### Converting economic data exponents to values then multiplying it to actual values.
 
+```r
     storm_data$PROPDMGEXP <- gsub("m",1000000,storm_data$PROPDMGEXP,ignore.case = TRUE)
     storm_data$PROPDMGEXP <- gsub("k",1000,storm_data$PROPDMGEXP,ignore.case = TRUE)
     storm_data$PROPDMGEXP <- gsub("b",1000000000,storm_data$PROPDMGEXP,ignore.case = TRUE)
@@ -189,19 +197,21 @@ injuries and death.**
     storm_data$CROPDMGEXP <- gsub("b",1000000000,storm_data$CROPDMGEXP,ignore.case=TRUE)
     storm_data_complete_case <- storm_data[complete.cases(storm_data),]
     storm_data_complete_case$CROPDMGEXP <- as.numeric(storm_data_complete_case$CROPDMGEXP)
-
+```
     ## Warning: NAs introduced by coercion
-
+```r
     storm_data_complete_case$PROPDMGEXP <- as.numeric(storm_data_complete_case$PROPDMGEXP)
-
+```
     ## Warning: NAs introduced by coercion
-
+```r
     storm_data_complete_case$TOTALPROPDMG <- storm_data_complete_case$PROPDMG * storm_data_complete_case$PROPDMGEXP
     storm_data_complete_case$TOTALCROPDMG <- storm_data_complete_case$CROPDMG * storm_data_complete_case$CROPDMGEXP
-
+```
 **Summarizing and re-organizing data to prepare it for Plotting.**
 
-    storm_data_complete_case_prop <- storm_data_complete_case %>% group_by(EVTYPE) %>% summarize(grandtotalprop=sum(TOTALPROPDMG,na.rm=TRUE))
+```r
+
+    storm_data_complete_case_prop <- storm_data_complete_case %>% group_by(EVTYPE) %>%         summarize(grandtotalprop=sum(TOTALPROPDMG,na.rm=TRUE))
     storm_data_complete_case_crop <- storm_data_complete_case %>% group_by(EVTYPE) %>% summarize(grandtotalcrop=sum(TOTALCROPDMG,na.rm=TRUE))
     total_eco_dmg <- full_join(storm_data_complete_case_crop,storm_data_complete_case_prop,by="EVTYPE")
     total_eco_dmg$Total <- total_eco_dmg$grandtotalcrop+total_eco_dmg$grandtotalprop
@@ -211,11 +221,13 @@ injuries and death.**
     total_prop_dmg <- total_prop_dmg[1:7,]
     total_eco_dmg <- total_eco_dmg[order(total_eco_dmg$Total,decreasing = TRUE),]
     total_eco_dmg <- total_eco_dmg[1:7,]
+```
 
 ### Results
 
 **Plotting and seeing top events causing the most damage economically**
 
+```r
     cropPlot <- ggplot()+geom_bar(data=total_crop_dmg,aes(x = reorder(EVTYPE, -grandtotalcrop),y=grandtotalcrop,fill=interaction(EVTYPE,grandtotalcrop)),show.legend = FALSE,stat="identity")+
         xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Crop)")+
         scale_fill_brewer(palette="BrBG")
@@ -230,8 +242,8 @@ injuries and death.**
         scale_fill_brewer(palette="BrBG")
 
     grid.arrange(cropPlot,propPlot,totalPlot)
-
-![](ExploreWeatherEvents_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+```
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/07_ExploreWeatherEvents/graphs/Plot2.png)
 
 ### 3.Conclusion
 
