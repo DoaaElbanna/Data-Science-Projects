@@ -167,11 +167,13 @@ harmful events.**
     event_injuries <- event_injuries[1:7,]
     injPlot <- ggplot(event_injuries) + geom_bar(aes(x = reorder(EVTYPE, -INJURIES), y = INJURIES,        
         fill=interaction(INJURIES,EVTYPE)), show.legend=FALSE, stat="identity") + 
-        xlab("Event")+ylab("Injuries")+ggtitle("Top 7 Events Causing Injury") + scale_fill_brewer(palette="Spectral")
+        xlab("Event")+ylab("Injuries")+
+        ggtitle("Top 7 Events Causing Injury") + scale_fill_brewer(palette="Spectral")
 
     fatPlot <- ggplot(event_fatality)+ geom_bar(aes(x = reorder(EVTYPE, -FATALITIES), y = FATALITIES, 
         fill=interaction(FATALITIES,EVTYPE)),show.legend=FALSE,stat="identity") + 
-        xlab("Event")+ylab("Fatalities")+ggtitle("Top 7 Events Causing Fatalities") +     
+        xlab("Event")+ylab("Fatalities")+
+        ggtitle("Top 7 Events Causing Fatalities") +     
         scale_fill_brewer(palette="Spectral")
     grid.arrange(fatPlot,injPlot)
 ```
