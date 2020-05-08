@@ -211,8 +211,10 @@ injuries and death.**
 
 ```r
 
-    storm_data_complete_case_prop <- storm_data_complete_case %>% group_by(EVTYPE) %>%         summarize(grandtotalprop=sum(TOTALPROPDMG,na.rm=TRUE))
-    storm_data_complete_case_crop <- storm_data_complete_case %>% group_by(EVTYPE) %>% summarize(grandtotalcrop=sum(TOTALCROPDMG,na.rm=TRUE))
+    storm_data_complete_case_prop <- storm_data_complete_case %>% 
+    group_by(EVTYPE) %>%         summarize(grandtotalprop=sum(TOTALPROPDMG,na.rm=TRUE))
+    storm_data_complete_case_crop <- storm_data_complete_case %>% 
+    group_by(EVTYPE) %>% summarize(grandtotalcrop=sum(TOTALCROPDMG,na.rm=TRUE))
     total_eco_dmg <- full_join(storm_data_complete_case_crop,storm_data_complete_case_prop,by="EVTYPE")
     total_eco_dmg$Total <- total_eco_dmg$grandtotalcrop+total_eco_dmg$grandtotalprop
     total_crop_dmg <- total_eco_dmg[order(total_eco_dmg$grandtotalcrop,decreasing=TRUE),]
@@ -228,20 +230,25 @@ injuries and death.**
 **Plotting and seeing top events causing the most damage economically**
 
 ```r
-    cropPlot <- ggplot()+geom_bar(data=total_crop_dmg,aes(x = reorder(EVTYPE, -grandtotalcrop),y=grandtotalcrop,fill=interaction(EVTYPE,grandtotalcrop)),show.legend = FALSE,stat="identity")+
-        xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Crop)")+
-        scale_fill_brewer(palette="BrBG")
+    cropPlot <- ggplot()+geom_bar(data=total_crop_dmg,aes(x = reorder(EVTYPE, -grandtotalcrop),
+                                  y=grandtotalcrop,fill=interaction(EVTYPE,grandtotalcrop)),
+                                  show.legend = FALSE,stat="identity")+
+                                  xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Crop)")+
+                                  scale_fill_brewer(palette="BrBG")
 
 
-    propPlot <- ggplot()+geom_bar(data=total_prop_dmg,aes(x = reorder(EVTYPE, -grandtotalprop),y=grandtotalprop,fill=interaction(EVTYPE,grandtotalprop)),show.legend = FALSE,stat="identity")+
-        xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Property)") +
-        scale_fill_brewer(palette="BrBG")
+    propPlot <- ggplot()+geom_bar(data=total_prop_dmg,aes(x = reorder(EVTYPE, -grandtotalprop),
+                                  y=grandtotalprop,fill=interaction(EVTYPE,grandtotalprop)),
+                                  show.legend = FALSE,stat="identity")+
+                                  xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Property)") +
+                                  scale_fill_brewer(palette="BrBG")
 
-    totalPlot <- ggplot()+geom_bar(data=total_eco_dmg,aes(x = reorder(EVTYPE,-Total),y = Total,fill=interaction(EVTYPE,Total)),show.legend = FALSE,stat="identity")+
-        xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Total)")+
-        scale_fill_brewer(palette="BrBG")
+    totalPlot <- ggplot()+geom_bar(data=total_eco_dmg,aes(x = reorder(EVTYPE,-Total),y = Total,fill=interaction(EVTYPE,Total)),
+                                   show.legend = FALSE,stat="identity")+
+                                   xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Total)")+
+                                   scale_fill_brewer(palette="BrBG")
 
-    grid.arrange(cropPlot,propPlot,totalPlot)
+     grid.arrange(cropPlot,propPlot,totalPlot)
 ```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/07_ExploreWeatherEvents/graphs/Plot2.png)
 
