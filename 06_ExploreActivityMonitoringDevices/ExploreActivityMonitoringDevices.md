@@ -59,7 +59,7 @@ and weekends.
     # histogram
     hist(total_steps$steps, main = "Total number of Steps taken per day", xlab = "Steps", col="#684D71")
 
-![](ExploreActivityMonitoringDevices_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot1.png)
 
     # Calculate and report the mean and median of the total number of steps taken per day
     round(mean(total_steps$steps))
@@ -78,7 +78,7 @@ Part2: The average daily activity pattern
     # Make a time series plot
     plot(avg_steps$interval, avg_steps$steps, type = "l", main = "Average Daily Activity Pattern",xlab = "Time interval", ylab = "Average Steps", col="#5B022C")
 
-![](ExploreActivityMonitoringDevices_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot2.png)
 
     # Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -112,7 +112,7 @@ Part2: The average daily activity pattern
     # Histogram
     hist(steps_per_day$steps, main = "Histogram of total number of steps per day", xlab = "Steps per day", col="#684D71")
 
-![](ExploreActivityMonitoringDevices_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot3.png)
 
     # Mean and the Median of total number of steps per daya
     round(mean(steps_per_day$steps))
@@ -155,4 +155,4 @@ Part2: The average daily activity pattern
         labs(x="Interval", y=expression("No of Steps")) +
         ggtitle("Number of steps Per Interval by day type")
 
-![](ExploreActivityMonitoringDevices_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot4.png)
