@@ -1,6 +1,5 @@
-# Getting and cleaning data project
-
-# run_analysis.R script should have:
+```r
+# This script have:
 
 # 1-Merges the training and the test sets to create one data set.
 # 2-Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -88,7 +87,7 @@ tidySet <- tidySet[order(tidySet$subjectId, tidySet$activityId),]
 write.table(tidySet, "tidySet.txt", row.name=FALSE)
 
 
-
+```
 
 
 
