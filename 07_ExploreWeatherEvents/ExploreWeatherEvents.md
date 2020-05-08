@@ -242,12 +242,15 @@ injuries and death.**
     propPlot <- ggplot()+geom_bar(data=total_prop_dmg,aes(x = reorder(EVTYPE, -grandtotalprop),
                                   y=grandtotalprop,fill=interaction(EVTYPE,grandtotalprop)),
                                   show.legend = FALSE,stat="identity")+
-                                  xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Property)") +
+                                  xlab("Event")+ylab("Economic Damage")+
+                                  ggtitle("Top 7 Events causing Damage (Property)") +
                                   scale_fill_brewer(palette="BrBG")
 
-    totalPlot <- ggplot()+geom_bar(data=total_eco_dmg,aes(x = reorder(EVTYPE,-Total),y = Total,fill=interaction(EVTYPE,Total)),
+    totalPlot <- ggplot()+geom_bar(data=total_eco_dmg,aes(x = reorder(EVTYPE,-Total),y = Total,
+                                   fill=interaction(EVTYPE,Total)),
                                    show.legend = FALSE,stat="identity")+
-                                   xlab("Event")+ylab("Economic Damage")+ggtitle("Top 7 Events causing Damage (Total)")+
+                                   xlab("Event")+ylab("Economic Damage")+
+                                   ggtitle("Top 7 Events causing Damage (Total)")+
                                    scale_fill_brewer(palette="BrBG")
 
      grid.arrange(cropPlot,propPlot,totalPlot)
