@@ -63,7 +63,7 @@ Making Plots
 
 Plot1
 -----
-
+```r
     # First read data
     power_data <- data.table::fread(input = "data/household_power_consumption.txt", na.strings = "?")
 
@@ -77,12 +77,13 @@ Plot1
     # Plot 1
     hist(power_data[, Global_active_power], main="Global Active Power", 
          xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
+```
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot1.png)
 
 Plot2
 -----
-
+```r
     # First read data
     power_data <- data.table::fread(input = "data/household_power_consumption.txt", na.strings = "?")
 
@@ -97,12 +98,12 @@ Plot2
     plot(x = power_data[,dateTime],
          y = power_data[,Global_active_power], 
          type = "l", xlab = "", ylab = "Global Active Power KilloWatts")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot2.png)
 
 Plot3
 -----
-
+```r
     # First read data
     power_data <- data.table::fread(input = "data/household_power_consumption.txt", na.strings = "?")
 
@@ -121,12 +122,12 @@ Plot3
            , col=c("black","red","blue")
            , c("Sub_metering_1  ","Sub_metering_2  ", "Sub_metering_3  ")
            ,lty=c(1,1), lwd=c(1,1))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot3.png)
 
 Plot4
 -----
-
+```r
     # First read data
     power_data <- data.table::fread(input = "data/household_power_consumption.txt", na.strings = "?")
 
@@ -161,5 +162,5 @@ Plot4
     # Plot4
     plot(x = power_data[,dateTime], y = power_data[,Global_reactive_power], 
          type = "l", xlab = "dateTime", ylab = "Voltage")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/03_ElectricPowerConsumptionProject/graphs/plot4.png)
