@@ -46,32 +46,37 @@ and weekends.
 
 ### Loading and preprocessing the data
 
+```r
     activity_data <- read.csv("activity.csv", as.is = TRUE)
 
     # Remove missing values
     activity <- activity_data[complete.cases(activity_data),]
+```
 
 ### Part1: Calculate the mean of total number of steps taken per day
-
+```r
     # First calculate the Total number of steps taken per day
     total_steps <- aggregate(steps ~ date, activity, sum)
 
     # histogram
     hist(total_steps$steps, main = "Total number of Steps taken per day", xlab = "Steps", col="#684D71")
+```
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot1.png)
 
+```r
     # Calculate and report the mean and median of the total number of steps taken per day
     round(mean(total_steps$steps))
-
+```
     ## [1] 10766
-
+```r
     median(total_steps$steps)
-
+```
     ## [1] 10765
 
 ### Part2: The average daily activity pattern
 
+```r
     # Compute average steps per intervals
     avg_steps <- aggregate(steps ~ interval, activity, mean)
 
@@ -79,9 +84,10 @@ and weekends.
     plot(avg_steps$interval, avg_steps$steps, type = "l", 
          main = "Average Daily Activity Pattern",xlab = "Time interval", 
          ylab = "Average Steps", col="#5B022C")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot2.png)
 
+```r
     # Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
     # Get interval index which contain maximum number of steps
@@ -91,17 +97,19 @@ and weekends.
     print(paste("The interval with maximum number of steps is",
           avg_steps[interval_index,]$interval,"And the maximum number of steps is", 
           round(avg_steps[interval_index,]$steps, digits = 1)))
-
+```
     ## [1] "The interval with maximum number of steps is 835 And the maximum number of steps is 206.2"
 
 ### Imputing missing values
 
+```r
     # The total number of missing values in the dataset
     missing_activity_data <- activity_data[!(complete.cases(activity_data)),]
     print(paste("The Total number of missing values ",nrow(missing_activity_data)))
-
+```
     ## [1] "The Total number of missing values  2304"
 
+```r
     # Devise a strategy for filling in all of the missing values in the dataset.
     for (i in 1:nrow(activity_data)) {
         if(is.na(activity_data$steps[i])) {
@@ -116,22 +124,25 @@ and weekends.
     # Histogram
     hist(steps_per_day$steps, main = "Histogram of total number of steps per day", 
     xlab = "Steps per day", col="#684D71")
+```
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot3.png)
 
+```r
     # Mean and the Median of total number of steps per daya
     round(mean(steps_per_day$steps))
-
+```
     ## [1] 10766
-
+```r
     median(steps_per_day$steps)
-
+```
     ## [1] 10766.19
 
 **We Note the Values of mean and median doesn’t change**
 
 ### Part3: Find if there are differences in activity patterns between weekdays and weekends
 
+```r
     # First we create a function that define if the date is a weekday
     week_day <- function(date_val) {
         wd <- weekdays(as.Date(date_val, '%Y-%m-%d'))
@@ -159,5 +170,5 @@ and weekends.
         facet_grid(day_type ~ ., scales="fixed", space="fixed") +
         labs(x="Interval", y=expression("No of Steps")) +
         ggtitle("Number of steps Per Interval by day type")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot4.png)
