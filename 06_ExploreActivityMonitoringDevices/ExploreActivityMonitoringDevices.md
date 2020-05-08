@@ -77,8 +77,8 @@ and weekends.
 
     # Make a time series plot
     plot(avg_steps$interval, avg_steps$steps, type = "l", 
-    main = "Average Daily Activity Pattern",xlab = "Time interval", 
-    ylab = "Average Steps", col="#5B022C")
+         main = "Average Daily Activity Pattern",xlab = "Time interval", 
+         ylab = "Average Steps", col="#5B022C")
 
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/06_ExploreActivityMonitoringDevices/graphs/Plot2.png)
 
@@ -88,7 +88,9 @@ and weekends.
     interval_index <- which.max(avg_steps$steps)
 
     # Get the interval index and the maximum number of steps
-    print(paste("The interval with maximum number of steps is",avg_steps[interval_index,]$interval,"And the maximum number of steps is", round(avg_steps[interval_index,]$steps, digits = 1)))
+    print(paste("The interval with maximum number of steps is",
+          avg_steps[interval_index,]$interval,"And the maximum number of steps is", 
+          round(avg_steps[interval_index,]$steps, digits = 1)))
 
     ## [1] "The interval with maximum number of steps is 835 And the maximum number of steps is 206.2"
 
