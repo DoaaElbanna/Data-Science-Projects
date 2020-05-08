@@ -57,22 +57,22 @@ SCC](https://ofmpub.epa.gov/sccsearch/docs/SCC-IntroToSCCs.pdf).
 #### The Goal of this project is to explore the National Emissions Inventory database and see what it say about fine particulate matter pollution in the United states over the 10-year period 1999–2008.
 
 **First Read the Data Files**
-
+```r
     NEI <- readRDS("summarySCC_PM25.rds")
     SCC <- readRDS("Source_Classification_Code.rds")
-
+```
 ### Part1:
 
 Make a plot showing the total PM2.5 emissions decreased in the United
 States for each of the years 1999, 2002, 2005, and 2008.
 
 **Implementation:**
-
+```r
     total_pm <- with(NEI,tapply(NEI$Emissions, NEI$year, sum, na.rm = TRUE))
     years <- unique(NEI$year)
     plot(years, total_pm, pch =19, type = "o", main = expression("Total PM"[2.5]*" Emissions over a years"), 
          xlab = "Year", ylab = expression("Total PM"[2.5]*" Emissions"))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot1.png)
 
 ------------------------------------------------------------------------
@@ -83,12 +83,12 @@ Make a plot showing total emissions from PM2.5 decreased in the
 **Baltimore City**, Maryland (**fips**==“24510”) from 1999 to 2008.
 
 **Implementation:**
-
+```r
     baltimore_data <- subset(NEI, fips == "24510")  # Subset baltimore data
     tpm_baltimore <- with(baltimore_data,tapply(baltimore_data$Emissions, baltimore_data$year, sum, na.rm = TRUE))
     barplot(as.table(tpm_baltimore), main = expression("Total PM"[2.5]*" Emissions for Baltimore City"), 
             xlab = "Year", ylab = expression("Total Pm"[2.5]*" Emissions"), col = "#004c4c")
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot2.png)
 
 ------------------------------------------------------------------------
@@ -103,7 +103,7 @@ emissions from 1999–2008? Use the ggplot2 plotting system to make a plot
 answer this question.
 
 **Implementation:**
-
+```r
     library(ggplot2)
     ggplot(baltimore_data, aes(factor(baltimore_data$year), baltimore_data$Emissions, fill = baltimore_data$type)) +  
     geom_bar(stat="identity") + facet_grid(.~baltimore_data$type, scales = "free", space = "free")+
@@ -112,8 +112,9 @@ answer this question.
       guides(fill = guide_legend(title = "Source Types"))+
       theme(plot.title = element_text(hjust = 0.5)) + 
       scale_fill_manual(values=c("#3D0F2B","#69527E","#AA6F73", "#444888"))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot3.png)
+
 From the plot, The nonpoint, onroad, nonroad sources are decresed from
 1999-2008 and The point source increased from 1999-2008.
 
@@ -126,6 +127,7 @@ coal combustion-related sources changed from 1999–2008.
 
 **Implementation:**
 
+```r
     # Subset coal combustion related NEI data
     comb_related <- grepl("comb", SCC$SCC.Level.One, ignore.case=TRUE)
     coal_related <- grepl("coal", SCC$SCC.Level.Four, ignore.case=TRUE) 
@@ -138,7 +140,7 @@ coal combustion-related sources changed from 1999–2008.
       theme_bw() +  guides(fill=FALSE) +
       labs(x="Year", y=expression("Total PM"[2.5]*" Emission (10^5 Tons)")) + 
       labs(title=expression("PM"[2.5]*" Coal Combustion Source Emissions In US from 1999-2008"))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot4.png)
 
 From the plot we notice that emissions from coal combustion-related
@@ -153,6 +155,7 @@ changed from 1999–2008 in Baltimore City.
 
 **Implementation:**
 
+```r
     # First subset the motor vehicles
     vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
     vehiclesSCC <- SCC[vehicles,]$SCC
@@ -166,7 +169,7 @@ changed from 1999–2008 in Baltimore City.
       theme_bw() +  guides(fill=FALSE) +
       labs(x="Year", y=expression("Total PM"[2.5]*" Emission (10^5 Tons)")) + 
       labs(title=expression("PM"[2.5]*" Motor Vehicle Source Emissions in Baltimore"))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot5.png)
 
 ------------------------------------------------------------------------
@@ -179,7 +182,7 @@ County, California (**fips**==“06037”). And showing which city has seen
 greater changes over time in motor vehicle emissions.
 
 **Implementation:**
-
+```r
     vehicles_baltimoreNEI <- vehiclesNEI[vehiclesNEI$fips == 24510,]
     vehicles_baltimoreNEI$city <- "Baltimore City"
     vehiclesLANEI <- vehiclesNEI[vehiclesNEI$fips=="06037",]
@@ -194,5 +197,5 @@ greater changes over time in motor vehicle emissions.
       labs(title=expression("PM"[2.5]*" Motor Vehicle Source Emissions in Baltimore & LA")) +
       theme(plot.title = element_text(hjust = 0.5)) +
       scale_fill_manual(values = c("#a74c65", "#866f8d"))
-
+```
 ![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/04_ExploreNEIDatabaseProject/graphs/Plot6.png)
