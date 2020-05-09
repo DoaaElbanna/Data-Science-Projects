@@ -1,7 +1,7 @@
 Introduction
 ------------
 
-In this project I’m doing exploratory graphs to understanding the data
+Making exploratory graphs to understanding the data
 and its properities and explore if there any patterns in data which is
 from the UC Irvine Machine Learning Repository, a popular repository for
 machine learning datasets.
