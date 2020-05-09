@@ -6,7 +6,9 @@ In this Project we’re going to analyze the ToothGrowth data in the R datasets 
 The Data set contains 60 observations of 3 variables:
 
 **len** : Tooth length
+
 **supp** : Supplement type (VC or OJ)
+
 **dose** : Dose in milligrams
 
 
