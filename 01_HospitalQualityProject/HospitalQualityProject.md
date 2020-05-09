@@ -1,7 +1,7 @@
 Introduction
 ------------
 
-In this project I work with dataset from The [Hosptial Compare web
+In this project I work with dataset from The [Hospital Compare web
 site](http://hospitalcompare.hhs.gov/) run by the U.S. Department of
 Health and Human Services. The web site provide data and information
 about the quality of care at over 4,000 Medicare-certied hospitals in
