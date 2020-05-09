@@ -13,7 +13,7 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 ## There are five steps applied on the orginal data set:
 
-1- Mergeing the training and the test sets to create one data set.
+1- Merging the training and the test sets to create one data set.
 
 2- Extracts only the measurements on the mean and standard deviation for each measurement.
 
