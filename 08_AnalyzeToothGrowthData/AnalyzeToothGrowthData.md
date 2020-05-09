@@ -9,22 +9,23 @@ to use hypothesis tests to compare tooth growth by supp and dose.
 ————————————————————————————————–
 ---------------------------------
 
+```r
     # Load the Dataset
     library(ggplot2)
     library(datasets)
     data(ToothGrowth)
-
+```
 ### Some Basic Exploratory Data Analysis
-
+```r
     str(ToothGrowth)
-
+```
     ## 'data.frame':    60 obs. of  3 variables:
     ##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
     ##  $ supp: Factor w/ 2 levels "OJ","VC": 2 2 2 2 2 2 2 2 2 2 ...
     ##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
-
+```r
     summary(ToothGrowth)
-
+```
     ##       len        supp         dose      
     ##  Min.   : 4.20   OJ:30   Min.   :0.500  
     ##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
@@ -35,21 +36,23 @@ to use hypothesis tests to compare tooth growth by supp and dose.
 
 ### Plot of tooth growth by supp and dose
 
+```r
     ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
         geom_bar(stat="identity") +
         facet_grid(. ~ supp) +
         xlab("Dose(mg/day)") +ylab("Tooth length") + ggtitle("Inferential Data Analysis on Toothgrowth")
-
-![](AnalyzeToothGrowthData_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+```
+![](https://github.com/DoaaElbanna/Data-Science-Projects/blob/master/08_AnalyzeToothGrowthData/graphs/Plot.png)
 
 ### Use hypothesis tests to compare tooth growth by supp and dose
 
 First, We’re going to compare between Tooth Growth and Supplement and
 invstigate if there any correlation between these variables.
 
+```r
     t1 <- t.test(len ~ supp, data = ToothGrowth)
     print(t1)
-
+```
     ## 
     ##  Welch Two Sample t-test
     ## 
@@ -74,10 +77,11 @@ impact on Tooth Growth based on this Test.
 Let’s perform another test, now comparing Tooth Grow with Dose Amount
 looking at the different pairs of dose values(0.5, 1.0, 2.0)
 
+```r
     # Does amount 0.5 and 1.0
     t2 <- t.test(len~dose , data = subset(ToothGrowth, ToothGrowth$dose %in% c(1.0, 0.5)))
     print(t2)
-
+```
     ## 
     ##  Welch Two Sample t-test
     ## 
@@ -92,10 +96,11 @@ looking at the different pairs of dose values(0.5, 1.0, 2.0)
 
     ## [1] "P-value =  1.26830072017385e-07"
 
+```r
     # Does amount 0.5 and 2.0
     t3 <- t.test(len~dose , data = subset(ToothGrowth, ToothGrowth$dose %in% c(2.0, 0.5)))
     print(t3)
-
+```
     ## 
     ##  Welch Two Sample t-test
     ## 
@@ -110,10 +115,11 @@ looking at the different pairs of dose values(0.5, 1.0, 2.0)
 
     ## [1] "P-value =  4.39752495936323e-14"
 
+```r
     # Does amount 1.0 and 2.0
     t4<- t.test(len~dose , data = subset(ToothGrowth, ToothGrowth$dose %in% c(2.0, 1.0)))
     print(t4)
-
+```
     ## 
     ##  Welch Two Sample t-test
     ## 
