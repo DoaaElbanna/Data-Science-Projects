@@ -2,7 +2,7 @@ Introduction
 ------------
 
 Making exploratory graphs to understanding the data
-and its properities and explore if there any patterns in data which is
+and its properties and explore if there any patterns in data which is
 from the UC Irvine Machine Learning Repository, a popular repository for
 machine learning datasets.
 
