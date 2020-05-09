@@ -18,7 +18,7 @@ file name. For example, data for monitor 200 is contained in the file
 -   **nitrate**: the level of nitrate PM in the air on that date
     (measured in micrograms per cubic meter)
 
-**Note:**In each file you’ll notice that there are many days where
+**Note:** In each file you’ll notice that there are many days where
 either sulfate or nitrate (or both) are missing (coded as NA). This is
 common with air pollution monitoring data in the United States.
 
